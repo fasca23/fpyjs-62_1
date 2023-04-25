@@ -17,6 +17,7 @@
         var a = 1;
 
         // Количество попыток
+        const a_Max = 5
         var a_max = 5
 
         // Один раз вводим число без цикла (не получилось по другому сделать)
@@ -35,17 +36,20 @@
             // console.log(p);
             var p_int = parseInt(p);
             var p_check = isNaN(p_int);
+            a_max -= 1
         }
-        switch (n) {
-                case p_int: 
-                    alert('Вы правильно угадали число!! - ' + n);
-                    break;
-                default: 
-                    alert('Число угадано неверно... - Нажмите ОК и попробуйте еще раз. ');
-                    break;
+        if (p_int === n) {
+            alert('Вы правильно угадали число!! - ' + n);
         }
+        else if (p_int > n) {
+            alert('Число угадано неверно... - Оно БОЛЬШЕ. ');
+        }
+        else if (p_int < n) {
+            alert('Число угадано неверно... - Оно МЕНЬШЕ. ');
+        } 
+        a_max -= 1
         // Начинаем цикл пока верны неравенства, считая попытки
-        while((n !== p_int) && (a !== a_max)) {
+        while((n !== p_int) && (a < a_Max)) {
             
             while (p_check !== false){
                 alert('Вы ввели не число. Введите число.');
@@ -53,6 +57,7 @@
                 var p = prompt('У вас ' + a_max + ' попыток угадать. Попытка №' + a + ' Введите число');
                 var p_int = parseInt(p);
                 var p_check = isNaN(p_int);
+                a_max -= 1
             }
             a += 1
             console.log('Попытка № ' + a);
@@ -61,14 +66,16 @@
             // console.log(p);
             var p_check = isNaN(p);
             // console.log(p_check);
-            switch (n) {
-                case p_int: 
-                    alert('Вы правильно угадали число!! - ' + n);
-                    break;
-                default: 
-                    alert('Число угадано неверно... - Нажмите ОК и попробуйте еще раз. ');
-                    break;
-            }    
+            if (p_int === n) {
+                alert('Вы правильно угадали число!! - ' + n);
+            }
+            else if (p_int > n) {
+                alert('Число угадано неверно... - Оно БОЛЬШЕ. ');
+            }
+            else if (p_int < n) {
+                alert('Число угадано неверно... - Оно МЕНЬШЕ. ');
+            }
+            a_max -= 1    
         }
     </script>
 </body>
